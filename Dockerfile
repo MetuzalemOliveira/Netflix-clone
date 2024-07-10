@@ -2,7 +2,8 @@ FROM node:16.17.0-alpine as builder
 WORKDIR /app
 COPY ./package.json .
 COPY ./yarn.lock .
-RUN yarn install
+RUN yarn add @mui/material-icons --network-timeout 500000
+RUN yarnrc install
 COPY . .
 ARG TMDB_V3_API_KEY
 ENV VITE_APP_TMDB_V3_API_KEY=${TMDB_V3_API_KEY}
